@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DotNetty源码分析系列（一） | Littlesmilelove</title>
+<link rel="shortcut icon" href="https://littlesmilelove.github.io/favicon.ico?v=1557158590805">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://littlesmilelove.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://littlesmilelove.github.io">
+  <img class="avatar" src="https://littlesmilelove.github.io/images/avatar.png?v=1557158590805" alt="">
+  </a>
+  <h1 class="site-title">
+    Littlesmilelove
+  </h1>
+  <p class="site-description">
+    X's code
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              DotNetty源码分析系列（一）
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-06 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <h3 id="前言">前言</h3>
+<p>本系列文章不会演示DotNetty如何使用，而是探讨DotNetty的实现原理。</p>
+<h3 id="dotnetty介绍">DotNetty介绍</h3>
+<p>DotNetty是Microsoft Azure团队基于Java非常出名的Netty，以C#重写的事件驱动的异步网络框架，引用官方的一段话作为介绍：</p>
+<blockquote>
+<p>DotNetty project – a port of netty, event-driven asynchronous network application framework</p>
+</blockquote>
+<h3 id="一切从事件开始">一切从事件开始</h3>
+<p>DotNetty中有两种事件，<strong>Inbound Events</strong> 和 <strong>Outbound Operations</strong>。
+Inbound Events由请求触发，Outbound Operations则是响应的操作。</p>
+<h3 id="事件如何流转">事件如何流转</h3>
+<p>DotNetty中的事件是如何流转的呢，这时候要引入DotNetty中最重要的一个概念 <strong>ChannelPipeline</strong>。</p>
+<p>顾名思义，ChannelPipeline就是事件流转的管道，这个管道有两个方向，一个进，一个出。分别对应着上面提到的两种事件。</p>
+<h3 id="事件被如何处理">事件被如何处理</h3>
+<p>在ChannelPipeline中，可以添加许多的 <strong>ChannelHandler</strong>，注意，每个ChannelHandler的顺序都非常重要的。</p>
+<p>例如，在ChannelPipeline中，添加了 <strong>ChannelHandler 1 -- ChannelHandler N</strong> 这样的一列ChannelHandler。</p>
+<p><strong>Inbound Events</strong> 会以 <strong>ChannelHandler 1 -&gt; ChannelHandler N</strong> 的顺序流转。
+<strong>Outbound Operations</strong> 则会以 <strong>ChannelHandler N -&gt; ChannelHandler 1</strong> 的顺序流转。</p>
+<p>我们来看一个简单的例子：</p>
+<pre><code class="language-c#">pipeline.AddLast(new LoggingHandler());
+pipeline.AddLast(new DiscardServerHandler());
+</code></pre>
+<p>在这个例子中，我们添加了两个ChannelHandler，在 <strong>Inbound Events</strong> 中，事件会先经过 <strong>LoggingHandler</strong> 再流转到 <strong>DiscardServerHandler</strong> 中，而在 <strong>Outbound Operations</strong> 中则正好相反。</p>
+<h3 id="后记">后记</h3>
+<p>那么系列一就到这里结束了，我们下篇文章见。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://littlesmilelove.github.io/post/re-write">
+              <h3 class="post-title">
+                Re:Write
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
