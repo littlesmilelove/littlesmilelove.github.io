@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://littlesmilelove.github.io</id>
+    <title>Littlesmilelove</title>
+    <updated>2019-06-04T13:48:27.883Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://littlesmilelove.github.io"/>
+    <link rel="self" href="https://littlesmilelove.github.io/atom.xml"/>
+    <subtitle>X&apos;s code</subtitle>
+    <logo>https://littlesmilelove.github.io/images/avatar.png</logo>
+    <icon>https://littlesmilelove.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2019, Littlesmilelove</rights>
+    <entry>
+        <title type="html"><![CDATA[失去的技能]]></title>
+        <id>https://littlesmilelove.github.io/post/losted-skill</id>
+        <link href="https://littlesmilelove.github.io/post/losted-skill">
+        </link>
+        <updated>2019-06-03T15:29:25.000Z</updated>
+        <content type="html"><![CDATA[<p>这两年，感觉渐渐的失去了写作的技能。</p>
+<p>以前想要表达些什么，都能很容易的用文字的方式表达出来，这两年却发现，想用文字表达自己的想法变得越来越困难。有时候感觉脑袋已经想好了一样东西，想要用文字表达出来的时候，却经常卡壳，无从下手。</p>
+<p>这一点在写技术文章的时候尤为明显，当自己把脉络整理清楚，想分享给别人的时候，连标题都写不出来。哎，也有可能是太菜了，自己根本就没弄懂。</p>
+<p>不知道多点练习能不能找回写作的感觉，抽空多写写看吧，但是工作生活都乱糟糟，尽力而为吧。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DotNetty源码分析系列（一）]]></title>
+        <id>https://littlesmilelove.github.io/post/dotnetty-source-code-analyse-one</id>
+        <link href="https://littlesmilelove.github.io/post/dotnetty-source-code-analyse-one">
+        </link>
+        <updated>2019-05-06T15:07:28.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="前言">前言</h3>
+<p>本系列文章不会演示DotNetty如何使用，而是探讨DotNetty的实现原理。</p>
+<h3 id="dotnetty介绍">DotNetty介绍</h3>
+<p>DotNetty是Microsoft Azure团队基于Java非常出名的Netty，以C#重写的事件驱动的异步网络框架，引用官方的一段话作为介绍：</p>
+<blockquote>
+<p>DotNetty project – a port of netty, event-driven asynchronous network application framework</p>
+</blockquote>
+<h3 id="一切从事件开始">一切从事件开始</h3>
+<p>DotNetty中有两种事件，<strong>Inbound Events</strong> 和 <strong>Outbound Operations</strong>。
+Inbound Events由请求触发，Outbound Operations则是响应的操作。</p>
+<h3 id="事件如何流转">事件如何流转</h3>
+<p>DotNetty中的事件是如何流转的呢，这时候要引入DotNetty中最重要的一个概念 <strong>ChannelPipeline</strong>。</p>
+<p>顾名思义，ChannelPipeline就是事件流转的管道，这个管道有两个方向，一个进，一个出。分别对应着上面提到的两种事件。</p>
+<h3 id="事件被如何处理">事件被如何处理</h3>
+<p>在ChannelPipeline中，可以添加许多的 <strong>ChannelHandler</strong>，注意，每个ChannelHandler的顺序都非常重要的。</p>
+<p>例如，在ChannelPipeline中，添加了 <strong>ChannelHandler 1 -- ChannelHandler N</strong> 这样的一列ChannelHandler。</p>
+<p><strong>Inbound Events</strong> 会以 <strong>ChannelHandler 1 -&gt; ChannelHandler N</strong> 的顺序流转。
+<strong>Outbound Operations</strong> 则会以 <strong>ChannelHandler N -&gt; ChannelHandler 1</strong> 的顺序流转。</p>
+<p>我们来看一个简单的例子：</p>
+<pre><code class="language-c#">pipeline.AddLast(new LoggingHandler());
+pipeline.AddLast(new DiscardServerHandler());
+</code></pre>
+<p>在这个例子中，我们添加了两个ChannelHandler，在 <strong>Inbound Events</strong> 中，事件会先经过 <strong>LoggingHandler</strong> 再流转到 <strong>DiscardServerHandler</strong> 中，而在 <strong>Outbound Operations</strong> 中则正好相反。</p>
+<h3 id="后记">后记</h3>
+<p>那么系列一就到这里结束了，我们下篇文章见。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Re:Write]]></title>
+        <id>https://littlesmilelove.github.io/post/re-write</id>
+        <link href="https://littlesmilelove.github.io/post/re-write">
+        </link>
+        <updated>2019-04-23T15:46:56.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>自从写代码以来，一直都是从社区获得帮助，偶尔想分享点东西，一方面觉得自己水平不足，另一方面就是觉得搭建博客还是挺麻烦的。不过最近发现了这个新工具，可以一键搭建博客了，借着这个契机，我也来试着分享我的一些经验吧。</p>
+<h2 id="计划">计划</h2>
+<p>本人是软粉，所以分享主要以.Net Core为主，加上一部分学习Rust的经历。可能第一个系列是写个DotNetty的源码阅读吧。当然，可能会随时鸽了。</p>
+<h2 id="尾声">尾声</h2>
+<p>那么第一篇就这样结束吧。最近的一年，感觉生活既充满了希望，也有很多乱糟糟的地方，一起加油吧！</p>
+]]></content>
+    </entry>
+</feed>
