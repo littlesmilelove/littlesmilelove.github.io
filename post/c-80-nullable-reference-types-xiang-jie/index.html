@@ -1,22 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://littlesmilelove.github.io</id>
-    <title>Littlesmilelove</title>
-    <updated>2019-09-28T13:07:58.320Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://littlesmilelove.github.io"/>
-    <link rel="self" href="https://littlesmilelove.github.io/atom.xml"/>
-    <subtitle>X&apos;s code</subtitle>
-    <logo>https://littlesmilelove.github.io/images/avatar.png</logo>
-    <icon>https://littlesmilelove.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Littlesmilelove</rights>
-    <entry>
-        <title type="html"><![CDATA[C# 8.0 Nullable Reference Types 详解]]></title>
-        <id>https://littlesmilelove.github.io/post/c-80-nullable-reference-types-xiang-jie</id>
-        <link href="https://littlesmilelove.github.io/post/c-80-nullable-reference-types-xiang-jie">
-        </link>
-        <updated>2019-09-27T15:18:44.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="准备工作">准备工作</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>C# 8.0 Nullable Reference Types 详解 | Littlesmilelove</title>
+<meta name="description" content="X&#39;s code">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://littlesmilelove.github.io/favicon.ico?v=1569676072539">
+<link rel="stylesheet" href="https://littlesmilelove.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://littlesmilelove.github.io">
+        <img src="https://littlesmilelove.github.io/images/avatar.png?v=1569676072539" class="site-logo">
+        <h1 class="site-title">Littlesmilelove</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      X's code
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">C# 8.0 Nullable Reference Types 详解</h2>
+            <div class="post-date">2019-09-27</div>
+            
+            <div class="post-content">
+              <h2 id="准备工作">准备工作</h2>
 <p>首先，我们要确认一下开启 C# 8.0 Nullable Reference Types 的前提条件：</p>
 <ul>
 <li>Visual Studio 2019 16.3.0 以上版本</li>
@@ -372,65 +451,47 @@ void QueueTest(MyQueue&lt;string&gt; q)
 <p>这就是 C# 8.0 <code>Nullable Reference Types</code> 特性的绝大部分的应用场景，还有一些较为小众的场景比如控制流属性： <code>DoesNotReturn</code> 和 <code>DoesNotReturnIf(bool)</code> 没有介绍到，大家感兴趣的话可以自行去了解。</p>
 <p><code>Nullable Reference Types</code> 带来了什么呢？它使得程序在编译器更为安全，避免了运行时 <code>NullReferenceException</code> 的发生，我衷心希望大家都能应用上这个新特性，特别是开发公共库的作者们。而且因为这个特性是可以针对某个文件，某段代码进行开启或者关闭，是一个渐进式的特性，所以我们可以逐步引进，不会对项目产生影响。</p>
 <p>Enjoy coding!</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[失去的技能]]></title>
-        <id>https://littlesmilelove.github.io/post/losted-skill</id>
-        <link href="https://littlesmilelove.github.io/post/losted-skill">
-        </link>
-        <updated>2019-06-03T15:29:25.000Z</updated>
-        <content type="html"><![CDATA[<p>这两年，感觉渐渐的失去了写作的技能。</p>
-<p>以前想要表达些什么，都能很容易的用文字的方式表达出来，这两年却发现，想用文字表达自己的想法变得越来越困难。有时候感觉脑袋已经想好了一样东西，想要用文字表达出来的时候，却经常卡壳，无从下手。</p>
-<p>这一点在写技术文章的时候尤为明显，当自己把脉络整理清楚，想分享给别人的时候，连标题都写不出来。哎，也有可能是太菜了，自己根本就没弄懂。</p>
-<p>不知道多点练习能不能找回写作的感觉，抽空多写写看吧，但是工作生活都乱糟糟，尽力而为吧。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[DotNetty源码分析系列（一）]]></title>
-        <id>https://littlesmilelove.github.io/post/dotnetty-source-code-analyse-one</id>
-        <link href="https://littlesmilelove.github.io/post/dotnetty-source-code-analyse-one">
-        </link>
-        <updated>2019-05-06T15:07:28.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="前言">前言</h3>
-<p>本系列文章不会演示DotNetty如何使用，而是探讨DotNetty的实现原理。</p>
-<h3 id="dotnetty介绍">DotNetty介绍</h3>
-<p>DotNetty是Microsoft Azure团队基于Java非常出名的Netty，以C#重写的事件驱动的异步网络框架，引用官方的一段话作为介绍：</p>
-<blockquote>
-<p>DotNetty project – a port of netty, event-driven asynchronous network application framework</p>
-</blockquote>
-<h3 id="一切从事件开始">一切从事件开始</h3>
-<p>DotNetty中有两种事件，<strong>Inbound Events</strong> 和 <strong>Outbound Operations</strong>。<br>
-Inbound Events由请求触发，Outbound Operations则是响应的操作。</p>
-<h3 id="事件如何流转">事件如何流转</h3>
-<p>DotNetty中的事件是如何流转的呢，这时候要引入DotNetty中最重要的一个概念 <strong>ChannelPipeline</strong>。</p>
-<p>顾名思义，ChannelPipeline就是事件流转的管道，这个管道有两个方向，一个进，一个出。分别对应着上面提到的两种事件。</p>
-<h3 id="事件被如何处理">事件被如何处理</h3>
-<p>在ChannelPipeline中，可以添加许多的 <strong>ChannelHandler</strong>，注意，每个ChannelHandler的顺序都非常重要的。</p>
-<p>例如，在ChannelPipeline中，添加了 <strong>ChannelHandler 1 -- ChannelHandler N</strong> 这样的一列ChannelHandler。</p>
-<p><strong>Inbound Events</strong> 会以 <strong>ChannelHandler 1 -&gt; ChannelHandler N</strong> 的顺序流转。<br>
-<strong>Outbound Operations</strong> 则会以 <strong>ChannelHandler N -&gt; ChannelHandler 1</strong> 的顺序流转。</p>
-<p>我们来看一个简单的例子：</p>
-<pre><code class="language-c#">pipeline.AddLast(new LoggingHandler());
-pipeline.AddLast(new DiscardServerHandler());
-</code></pre>
-<p>在这个例子中，我们添加了两个ChannelHandler，在 <strong>Inbound Events</strong> 中，事件会先经过 <strong>LoggingHandler</strong> 再流转到 <strong>DiscardServerHandler</strong> 中，而在 <strong>Outbound Operations</strong> 中则正好相反。</p>
-<h3 id="后记">后记</h3>
-<p>那么系列一就到这里结束了，我们下篇文章见。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Re:Write]]></title>
-        <id>https://littlesmilelove.github.io/post/re-write</id>
-        <link href="https://littlesmilelove.github.io/post/re-write">
-        </link>
-        <updated>2019-04-23T15:46:56.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
-<p>自从写代码以来，一直都是从社区获得帮助，偶尔想分享点东西，一方面觉得自己水平不足，另一方面就是觉得搭建博客还是挺麻烦的。不过最近发现了这个新工具，可以一键搭建博客了，借着这个契机，我也来试着分享我的一些经验吧。</p>
-<h2 id="计划">计划</h2>
-<p>本人是软粉，所以分享主要以.Net Core为主，加上一部分学习Rust的经历。可能第一个系列是写个DotNetty的源码阅读吧。当然，可能会随时鸽了。</p>
-<h2 id="尾声">尾声</h2>
-<p>那么第一篇就这样结束吧。最近的一年，感觉生活既充满了希望，也有很多乱糟糟的地方，一起加油吧！</p>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://littlesmilelove.github.io/post/losted-skill">
+                  <h3 class="post-title">
+                    失去的技能
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
