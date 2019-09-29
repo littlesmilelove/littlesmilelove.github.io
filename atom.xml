@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://littlesmilelove.github.io</id>
     <title>Littlesmilelove</title>
-    <updated>2019-09-28T13:12:35.766Z</updated>
+    <updated>2019-09-29T14:16:02.207Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://littlesmilelove.github.io"/>
     <link rel="self" href="https://littlesmilelove.github.io/atom.xml"/>
@@ -370,7 +370,7 @@ void QueueTest(MyQueue&lt;string&gt; q)
 <p>非常棒的一个特性！</p>
 <h2 id="总结">总结</h2>
 <p>这就是 C# 8.0 <code>Nullable Reference Types</code> 特性的绝大部分的应用场景，还有一些较为小众的场景比如控制流属性： <code>DoesNotReturn</code> 和 <code>DoesNotReturnIf(bool)</code> 没有介绍到，大家感兴趣的话可以自行去了解。</p>
-<p><code>Nullable Reference Types</code> 带来了什么呢？它使得程序在编译器更为安全，避免了运行时 <code>NullReferenceException</code> 的发生，我衷心希望大家都能应用上这个新特性，特别是开发公共库的作者们。而且因为这个特性是可以针对某个文件，某段代码进行开启或者关闭，是一个渐进式的特性，所以我们可以逐步引进，不会对项目产生影响。</p>
+<p><code>Nullable Reference Types</code> 带来了什么呢？它使得程序在编译期更为安全，避免了运行时 <code>NullReferenceException</code> 的发生，我衷心希望大家都能应用上这个新特性，特别是开发公共库的作者们。而且因为这个特性是可以针对某个文件，某段代码进行开启或者关闭，是一个渐进式的特性，所以我们可以逐步引进，不会对项目产生影响。</p>
 <p>Enjoy coding!</p>
 ]]></content>
     </entry>
